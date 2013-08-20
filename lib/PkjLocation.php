@@ -10,7 +10,6 @@ class PkjLocation extends PkjCoreChild{
 
 		add_action('wp_enqueue_scripts', array($this, 'register_scripts'));
 		
-		
 		$this->registerPostType(new PkjLocationPostType());
 	}
 	
