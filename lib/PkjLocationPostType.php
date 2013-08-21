@@ -128,13 +128,18 @@ class PkjLocationPostType extends PkjCorePostType {
 		
 		$id = 'map__'.md5 ( uniqid ( "google_map" ) );
 		
-		return 
-		"<div id='$id' style='width: {$atts['width']}; height: {$atts['height']};'></div>
+		PkjCore::getInstance()->js->add("
 		<script type='text/javascript'>
 		jQuery(function () {
 			Pkj.GoogleMapMarkers(document.getElementById('$id'),".json_encode($locations).", ".json_encode($mapOptions).");
 		});
-		</script>";
+		</script>");
+		
+		return 
+		"<div id='$id' style='width: {$atts['width']}; height: {$atts['height']};'></div>
+		";
+		
+		
 	}
 	
 	
