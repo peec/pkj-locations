@@ -19,8 +19,6 @@ class PkjLocationPostType extends PkjCorePostType {
 				'id' => 'location_settings',
 				// Label of the Widget area
 				'label' => 'Location',
-				// Override the standard theme to add google maps integration
-				'viewfile' => 'admin/posttype/section_location_settings',
 				// Description of the widget area.
 				'description' => 'Place the marker or search for location',
 				// The fields available.
