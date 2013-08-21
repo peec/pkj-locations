@@ -78,6 +78,7 @@ class PkjLocationPostType extends PkjCorePostType {
 		}
 		
 		wp_enqueue_script ( 'google.maps' ); // Enqueue JS script.
+		wp_enqueue_script( 'pkj.site.location' );
 		
 		$atts['taxonomies'] = array_filter(explode(',', $atts['taxonomies']), function ($item) {
 			return trim($item);
