@@ -21,22 +21,24 @@
  */
 
 
-$name = "PKJ - Locations";
-$ns = 'PkjLocation';
-$dependencies =array('PkjCore');
-
-// -- Bootstrap --
-if (class_exists('PkjCore')) {
-	require dirname(__FILE__) . "/lib/$ns.php";
-	$pkjCore = PkjCore::getInstance();
-	$pkjCore->registerChild(new $ns(
-			__DIR__,
-			$ns,
-			// Dependencies
-			$dependencies
-	));
-} else {
-	add_action( 'admin_notices', function () use ($name) {
-		echo sprintf('<div class="error"><p>PKJ - Core plugin is needed for %s</p></div>', $name);
-	});
-}
+add_filter( 'pkj-base-loaded', function () {
+	$name = "PKJ - Locations";
+	$ns = 'PkjLocation';
+	$dependencies =array('PkjCore');
+	
+	// -- Bootstrap --
+	if (class_exists('PkjCore')) {
+		require dirname(__FILE__) . "/lib/$ns.php";
+		$pkjCore = PkjCore::getInstance();
+		$pkjCore->registerChild(new $ns(
+				__DIR__,
+				$ns,
+				// Dependencies
+				$dependencies
+		));
+	} else {
+		add_action( 'admin_notices', function () use ($name) {
+			echo sprintf('<div class="error"><p>PKJ - Core plugin is needed for %s</p></div>', $name);
+		});
+	}
+});
